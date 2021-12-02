@@ -11,6 +11,8 @@ print(dict["money"]["green"])
 print(dict["money"]["blue"])
 def add_money(color, amount):
     dict["money"][color]["val"] += int(amount)
+def wipe_money(color):
+    dict["money"][color]["val"] = 0
 def add_level(color, amount):
     if color == "blue":
         dict["unlock"] = True
@@ -34,7 +36,7 @@ while True:
             """)
     elif action == "add":
         color = input("What color would you like to add money to? ")
-        amount = input("What amount would you like to add? ")
+        amount = int(input("What amount would you like to add? "))
         add_money(color, amount)
         print("done!") 
     elif action == "level":
@@ -42,6 +44,8 @@ while True:
         amount = input("What amount would you like to add? ")
         add_level(color, amount)
         print("done!") 
+    elif action == "wipe":
+        wipe_money(input("what color would you like to wipe? "))
     elif action == "spectrum":
         add = int(input("How many spectrums would you like to add? "))
         dict["unlocked"] = True

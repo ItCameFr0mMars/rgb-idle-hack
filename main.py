@@ -27,6 +27,8 @@ while True:
             level = add levels
             spectrum = add spectrum
             random = change the bars' colors to random values
+            black = add black
+            efficency = add max efficency to color mixes
             export = export the data into an
             exit = exit
             """)
@@ -42,7 +44,9 @@ while True:
         print("done!") 
     elif action == "spectrum":
         add = int(input("How many spectrums would you like to add? "))
+        dict["unlocked"] = True
         dict["specced"] += add
+        dict["spectrum"]["val"] = dict["specced"]
         print("done!") 
     elif action == "random":
         for i in range(len(dict["bars"]["red"]["color"])):
@@ -51,7 +55,19 @@ while True:
             dict["bars"]["green"]["color"][i] = r.randint(0,255)    
         for i in range(len(dict["bars"]["blue"]["color"])):
             dict["bars"]["blue"]["color"][i] = r.randint(0,255)
+        if input("Would you like random width as well? (y/n) ") == "y":
+            print(dict["bars"]["green"]["width"])
+            dict["bars"]["green"]["width"]["val"] = r.randint(10,11)
+            dict["bars"]["red"]["width"]["val"] = r.randint(10,11)
+            dict["bars"]["blue"]["width"] = r.randint(10,11)
         print("done!")        
+    elif action == "black":
+        black = int(input("How many black would you like to add? "))
+        dict["black"] += black    
+    elif action == "efficency":
+        dict["potencyEff"]["red"] = 0.002
+        dict["potencyEff"]["green"] = 0.002
+        dict["potencyEff"]["blue"] = 0.002
     elif action == "exit":
         break
     elif action == "export":
